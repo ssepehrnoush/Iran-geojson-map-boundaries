@@ -62,7 +62,7 @@ Installing QuickWKT plugin for QGIS for displaying the WKT multi point format pr
  - It should take a few seconds
  - Scroll down and find QuickWKT 
  - On the right side click on Install plugin
- - After that the program is ready to use for our purpose, You just have to drag and drop [irir_states_boundaries_coordinates.geojson] into the software and the map will shown.
+ - After that the program is ready to use for our purpose, You just have to drag and drop [ir_states_boundaries_coordinates.geojson] into the software and the map will shown.
  
 ### Generating Random points within any state
  - Run cmd as administrator and goto your downloaded * [Python-pip] directory.
@@ -82,7 +82,7 @@ Its Done !
 
 
  [Your Random Points Generator Python Script]: <https://github.com/ssepehrnoush/Iran-geojson-map-boundaries/blob/master/random_tiles.py>
- [irir_states_boundaries_coordinates.geojson]: <https://github.com/ssepehrnoush/Iran-geojson-map-boundaries/blob/master/ir_states_boundaries_coordinates.geojson>
+ [ir_states_boundaries_coordinates.geojson]: <https://github.com/ssepehrnoush/Iran-geojson-map-boundaries/blob/master/Source/ir_states_boundaries_coordinates.geojson>
  [Python Bindings]: <http://download.gisinternals.com/sdk/downloads/release-1500-gdal-1-11-4-mapserver-6-4-3/GDAL-1.11.4.win32-py2.7.msi>
  [GDAL Binary]: <http://download.gisinternals.com/sdk/downloads/release-1500-gdal-1-11-4-mapserver-6-4-3/gdal-111-1500-core.msi>
  [Python 2.7]: <https://www.python.org/ftp/python/2.7.8/python-2.7.8.msi>
