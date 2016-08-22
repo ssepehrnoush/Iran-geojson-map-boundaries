@@ -62,7 +62,7 @@ Installing QuickWKT plugin for QGIS for displaying the WKT multi point format pr
  - It should take a few seconds
  - Scroll down and find QuickWKT 
  - On the right side click on Install plugin
- - After that the program is ready to use for our purpose, You just have to drag and drop [ir_states_boundaries_coordinates.geojson] into the software and the map will shown.
+ - After that the program is ready to use for our purpose, You just have to drag and drop [ir_states_boundaries_coordinates.geojson] into the software and the map will shown itself.
  
 ### Generating Random points within any state
  - Run cmd as administrator and goto your downloaded * [Python-pip] directory.
