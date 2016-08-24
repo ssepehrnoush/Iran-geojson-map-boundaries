@@ -40,7 +40,7 @@ With special thanks to:
 
 [Sepehrnoush] , [xunilk]
 [xunilk]: <http://gis.stackexchange.com/users/45066/xunilk>
-[Neda Sepehrnoush]: <https://github.com/sepehrnoush>
+[Sepehrnoush]: <https://github.com/sepehrnoush>
 Source :
  - [www.Mapzen.com]
  - [www.GDAL.org]
