@@ -21,13 +21,14 @@ Install  [Python 2.7] with the default options and directories.
 # Step 2:
 Download [get-pip] and run it through this command in command prompt
 Goto the directory that contains get-pip.py using *cd* commmand then type:
- - python get-pip.py
+ 'python get-pip.py'
 
 # Step 3:
 Install these two packages using pip command also in cmd by typing:
+'''
  - pip install geojson
  - pip install gdal
-
+'''
 # Congratulation
 [Your Python Script] is ready to use.
 
@@ -39,6 +40,7 @@ Install these two packages using pip command also in cmd by typing:
 With special thanks to:
 
 [Neda Sepehrnoush]
+
 [xunilk]
 
 [xunilk]: <http://gis.stackexchange.com/users/45066/xunilk>
@@ -46,7 +48,7 @@ With special thanks to:
 Source :
  - [www.Mapzen.com]
  - [www.GDAL.org]
- - [www.pcjericks.github.io/py-gdalogr-cookbook]
+ - [py-gdalogr-cookbook]
 [www.Mapzen.com]: <https://mapzen.com/>
-[www.pcjericks.github.io/py-gdalogr-cookbook]: <https://pcjericks.github.io/py-gdalogr-cookbook/geometry.html>
+[py-gdalogr-cookbook]: <https://pcjericks.github.io/py-gdalogr-cookbook/geometry.html>
 [www.GDAL.org]: <http://www.gdal.org/classOGRGeometry.html#aa3d42b06ae6f7bbef6d1a2886da8d398>
