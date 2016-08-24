@@ -26,8 +26,8 @@ Goto the directory that contains get-pip.py using *cd* commmand then type:
 # Step 3:
 Install these two packages using pip command also in cmd by typing:
 '''
- - pip install geojson
- - pip install gdal
+	pip install geojson
+	pip install gdal
 '''
 # Congratulation
 [Your Python Script] is ready to use.
