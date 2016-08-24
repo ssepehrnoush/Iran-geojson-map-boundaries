@@ -25,10 +25,9 @@ Goto the directory that contains get-pip.py using *cd* commmand then type:
 
 # Step 3:
 Install these two packages using pip command also in cmd by typing:
-'''
+ 
 	pip install geojson
 	pip install gdal
-'''
 # Congratulation
 [Your Python Script] is ready to use.
 
@@ -39,9 +38,7 @@ Install these two packages using pip command also in cmd by typing:
 
 With special thanks to:
 
-[Neda Sepehrnoush]
-
-[xunilk]
+[Neda Sepehrnoush] , [xunilk]
 
 [xunilk]: <http://gis.stackexchange.com/users/45066/xunilk>
 [Neda Sepehrnoush]: <https://github.com/sepehrnoush>
