@@ -37,3 +37,11 @@ Install these two packages using pip command also in cmd by typing:
  [get-pip]: <https://github.com/ssepehrnoush/Iran-geojson-map-boundaries/blob/master/get-pip.py>
  [Python 2.7]: <https://www.python.org/ftp/python/2.7.8/python-2.7.8.msi>
 
+With special thanks to:
+[xunilk]:<http://gis.stackexchange.com/users/45066/xunilk>
+[Neda Sepehrnoush]: <https://github.com/sepehrnoush>
+Source :
+ - [www.Mapzen.com]: <www.mapzen.com>
+ - [www.GDAL.org]: <http://www.gdal.org/classOGRGeometry.html#aa3d42b06ae6f7bbef6d1a2886da8d398>
+ - [www.pcjericks.github.io/py-gdalogr-cookbook]: <https://pcjericks.github.io/py-gdalogr-cookbook/geometry.html>
+ - 
