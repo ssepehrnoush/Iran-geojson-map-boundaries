@@ -38,8 +38,7 @@ Install these two packages using pip command also in cmd by typing:
 
 With special thanks to:
 
-[Neda Sepehrnoush] , [xunilk]
-
+[aSepehrnous] , [xunilk]
 [xunilk]: <http://gis.stackexchange.com/users/45066/xunilk>
 [Neda Sepehrnoush]: <https://github.com/sepehrnoush>
 Source :
