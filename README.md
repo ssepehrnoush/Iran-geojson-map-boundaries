@@ -1,6 +1,6 @@
 # Iran-geojson-map-boundaries
-Its an simple and powerfull script that can help you generate as many as you want unique points within every iranian state
-It contains an geojson file of Iran states boundaries downloaded from [www.Mapzen.com]
+Its a simple and powerfull script that can help you generate unique points within every Iranian states as much as you want.
+It contains a geojson file of Iran states boundaries downloaded from [www.Mapzen.com]
 
 You can also see the map and the points graphically by using *[QGIS].
 Note: QGIS is an official project of the Open Source Geospatial Foundation (OSGeo). It runs on Linux, Unix, Mac OSX, Windows and Android and supports numerous vector, raster, and database formats and functionalities.
