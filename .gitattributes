@@ -1,0 +1,7 @@
+# Authored on Windows, consumed everywhere. Normalize to LF in the repo so a
+# clone on Linux or macOS does not arrive with CRLF line endings.
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.woff2 binary

@@ -1,89 +1,156 @@
-# Iran-geojson-map-boundaries
-Its a simple and powerfull script that can help you generate unique points within every Iranian states as much as you want.
-It contains a geojson file of Iran states boundaries downloaded from [www.Mapzen.com]
+# Iran GeoJSON province boundaries
 
-You can also see the map and the points graphically by using *[QGIS].
-Note: QGIS is an official project of the Open Source Geospatial Foundation (OSGeo). It runs on Linux, Unix, Mac OSX, Windows and Android and supports numerous vector, raster, and database formats and functionalities.
+[![ci](https://github.com/ssepehrnoush/Iran-geojson-map-boundaries/actions/workflows/ci.yml/badge.svg)](https://github.com/ssepehrnoush/Iran-geojson-map-boundaries/actions/workflows/ci.yml)
+[![code MIT](https://img.shields.io/badge/code-MIT-blue.svg)](LICENSE)
+[![data ODbL](https://img.shields.io/badge/data-ODbL%201.0-orange.svg)](DATA-LICENSE.md)
+[![python 3.9+](https://img.shields.io/badge/python-3.9%2B-brightgreen)](https://www.python.org/)
 
-### Prerequisites
+Boundaries for all **31 provinces of Iran** as a single GeoJSON file, plus a
+small script that returns random coordinates guaranteed to fall inside any
+province you name.
 
-	- Python 2.7
-	- python-pip 
-	- python-geojson
-	- python-gdal
+```bash
+python random_tiles.py Tehran 100
+python random_tiles.py IR-23 50 --format geojson
+python random_tiles.py تهران 10 --format csv
+```
 
-### Quick Start
-This guide is based on *Python 2.7* on a *Windows 32/64bit*:
+No packages to install. Python 3.9 or newer, standard library only.
 
-# Step 1:
-Install  [Python 2.7] with the default options and directories.
+## Install
 
-# Step 2:
-Download [get-pip] and run it through this command in command prompt
-Goto the directory that contains get-pip.py using *cd* commmand then type:
- 'python get-pip.py'
+There is nothing to install, and no package to add to a requirements file.
 
-# Step 3:
-### Installing GDAL
-Now this is gonna be a little tricky. Follow the exact structions.
+```bash
+git clone https://github.com/ssepehrnoush/Iran-geojson-map-boundaries.git
+cd Iran-geojson-map-boundaries
+python random_tiles.py --list
+```
 
- - Download the appropriate  [GDAL Binary]. After downloading install GDAL with standard settings.
- - Download  [Python Bindings] for GDAL binaries and install them.
- - # Recall that we had installed Python 2.7 earlier.
+If you only want the boundaries and not the script, take the one file:
 
-# Step 4:
-We need to tell Windows system where the GDAL installations are located, so we need to add some system variables.
+```bash
+curl -O https://raw.githubusercontent.com/ssepehrnoush/Iran-geojson-map-boundaries/master/ir_states_boundaries_coordinates.geojson
+```
 
-1. Right click on "Computer" on the desktop and go to "Properties"
-2. Click on Advanced System Properties
-3. Select Environment Variables.
-4. Under the System variables panel, find the ‘Path’ variable, then click on Edit.
-5. Go to the end of the box and copy and paste the following:
+## The data
 
- - ;C:\Program Files (x86)\GDAL
- - *Note: For 64-bit GDAL installations you would simply remove the (x86) after "Program Files" every time.*
-6. In the same System variables pane, click on “New” and then add the following in the dialogue box:
+`ir_states_boundaries_coordinates.geojson` is a `FeatureCollection` of 31
+features. Every feature is a `MultiPolygon` in WGS 84 (`lon, lat`) and carries
+the OpenStreetMap tags it was extracted with, including `name`, `name:en`,
+`ISO3166-2`, `wikidata` and `admin_level`.
 
- - Variable name: GDAL_DATA
- - Variable value: C:\Program Files (x86)\GDAL\gdal-data
-7. Click “OK”
-8. Add one more new variable by clicking “New…”
-10. Add the following in the dialogue box:
+Most provinces are a single ring. The ones with islands and river deltas are
+not: Hormozgan is 184 separate parts, Khuzestan 20, Bushehr 5, Mazandaran 2.
+Anything consuming this file has to handle `MultiPolygon`, not just `Polygon`.
 
- - Variable name: GDAL_DRIVER_PATH
- - Variable value: C:\Program Files (x86)\GDAL\gdalplugins
-11. Click “OK”
-# Testing the GDAL installation:
-1. Open the Windows command line, by going to the Start Menu -> Run ->Type in cmd and press Enter.
-2. Type in gdalinfo –version
-3. Press Enter.
-4. If you get the following result, then congratulations your GDAL installation worked smoothly!
- - GDAL 1.11.1, released 2014/09/24
+### Provinces
 
-# Step 5:
-Install these two packages using pip command also in cmd by typing:
- 
-	pip install geojson
-	pip install gdal ( Just for sure )
-# Congratulation
-[Your Python Script] is ready to use.
+| ISO 3166-2 | Name | نام | Parts |
+| --- | --- | --- | --- |
+| `IR-01` | East Azerbaijan | آذربایجان شرقی | 1 |
+| `IR-02` | West Azerbaijan | آذربایجان غربی | 1 |
+| `IR-03` | Ardabil | اردبیل | 1 |
+| `IR-04` | Isfahan | اصفهان | 1 |
+| `IR-05` | Ilam | ایلام | 1 |
+| `IR-06` | Bushehr | بوشهر | 5 |
+| `IR-07` | Tehran | تهران | 1 |
+| `IR-08` | Chaharmahal and Bakhtiari | چهارمحال و بختیاری | 1 |
+| `IR-09` | Alborz | البرز | 1 |
+| `IR-10` | Khuzestan | خوزستان | 20 |
+| `IR-11` | Zanjan | زنجان | 1 |
+| `IR-12` | Semnan | سمنان | 1 |
+| `IR-13` | Sistan and Baluchestan | سیستان و بلوچستان | 1 |
+| `IR-14` | Fars | فارس | 1 |
+| `IR-15` | Kerman | کرمان | 1 |
+| `IR-16` | Kurdistan | کردستان | 1 |
+| `IR-17` | Kermanshah | کرمانشاه | 1 |
+| `IR-18` | Kohgiluyeh and Boyer-Ahmad | کهگیلویه و بویر احمد | 1 |
+| `IR-19` | Gilan | گيلان | 1 |
+| `IR-20` | Lorestan | لرستان | 1 |
+| `IR-21` | Mazandaran | مازندران | 2 |
+| `IR-22` | Markazi | مرکزی | 1 |
+| `IR-23` | Hormozgan | هرمزگان | 184 |
+| `IR-24` | Hamadan | همدان | 1 |
+| `IR-25` | Yazd | یزد | 1 |
+| `IR-26` | Qom | قم | 1 |
+| `IR-27` | Golestan | گلستان | 1 |
+| `IR-28` | Qazvin | قزوین | 1 |
+| `IR-29` | South Khorasan | خراسان جنوبی | 1 |
+| `IR-30` | Razavi Khorasan | خراسان رضوی | 1 |
+| `IR-31` | North Khorasan | خراسان شمالی | 1 |
+## Random points inside a province
 
- [Your Python Script]: <https://github.com/ssepehrnoush/Iran-geojson-map-boundaries/blob/master/random_tiles.py>
- [ir_states_boundaries_coordinates.geojson]: <https://github.com/ssepehrnoush/Iran-geojson-map-boundaries/blob/master/ir_states_boundaries_coordinates.geojson>
- [get-pip]: <https://github.com/ssepehrnoush/Iran-geojson-map-boundaries/blob/master/get-pip.py>
- [Python 2.7]: <https://www.python.org/ftp/python/2.7.8/python-2.7.8.msi>
+The original use for this data: generate sample coordinates that land inside a
+given province and nowhere else, for seeding test data, distributing markers,
+or picking survey locations.
 
-With special thanks to:
+```
+python random_tiles.py --list                    list every province and its code
+python random_tiles.py Tehran 100                100 points, WKT for QGIS
+python random_tiles.py Fars 50 --format csv      lon,lat rows
+python random_tiles.py IR-23 20 --format geojson a FeatureCollection
+python random_tiles.py Qom 10 --seed 42          same 10 points every run
+```
 
-[Sepehrnoush] , [xunilk]
-[xunilk]: <http://gis.stackexchange.com/users/45066/xunilk>
-[Sepehrnoush]: <https://github.com/sepehrnoush>
-Source :
- - [www.Mapzen.com]
- - [www.GDAL.org]
- - [py-gdalogr-cookbook]
-[www.Mapzen.com]: <https://mapzen.com/>
-[py-gdalogr-cookbook]: <https://pcjericks.github.io/py-gdalogr-cookbook/geometry.html>
-[www.GDAL.org]: <http://www.gdal.org/classOGRGeometry.html#aa3d42b06ae6f7bbef6d1a2886da8d398>
-[Python Bindings]: <http://download.gisinternals.com/sdk/downloads/release-1500-gdal-1-11-4-mapserver-6-4-3/GDAL-1.11.4.win32-py2.7.msi>
- [GDAL Binary]: <http://download.gisinternals.com/sdk/downloads/release-1500-gdal-1-11-4-mapserver-6-4-3/gdal-111-1500-core.msi>
+A province can be given by its English name, its Persian name, or its ISO
+3166-2 code, in any case.
+
+Points are spread uniformly by area across every part of the province, which
+matters more than it sounds. Sampling the bounding box of Hormozgan and
+throwing away misses is the obvious approach and it barely terminates, because
+that box is mostly the Persian Gulf. Picking a part first, weighted by its
+area, keeps it fast and stops the small islands from being over-represented.
+
+To see the result on a map, paste the WKT output into QGIS with
+*Layer > Add Layer > Add Delimited Text Layer*, or open the GeoJSON output
+directly.
+
+## Tests
+
+```bash
+python -m unittest
+```
+
+14 tests, no dependencies. Containment is checked with a winding number
+implementation rather than the ray casting the script uses, so a test passing
+means two different algorithms agree, not that the code agrees with itself.
+
+## Licence
+
+The code is MIT. **The data is not.**
+
+`ir_states_boundaries_coordinates.geojson` came from OpenStreetMap by way of
+Mapzen and stays under the [Open Database License 1.0](https://opendatacommons.org/licenses/odbl/1-0/).
+Using it means crediting `© OpenStreetMap contributors` and linking to
+<https://www.openstreetmap.org/copyright>. Full terms and what share-alike
+does and does not cover: [DATA-LICENSE.md](DATA-LICENSE.md).
+
+If you need Iranian boundaries under looser terms, [Natural Earth](https://www.naturalearthdata.com/)
+is public domain.
+
+## مرزهای استان‌های ایران
+
+مختصات جغرافیایی مرزهای هر ۳۱ استان ایران در یک فایل GeoJSON، به‌همراه اسکریپتی
+که هر تعداد نقطهٔ تصادفی داخل استان دلخواه تولید می‌کند. بدون هیچ وابستگی، فقط
+پایتون ۳.
+
+نام استان را می‌شود انگلیسی، فارسی، یا با کد ISO داد:
+
+```bash
+python random_tiles.py تهران 100
+```
+
+داده از OpenStreetMap گرفته شده و تحت ODbL است، پس هر جا استفاده شد باید
+`© OpenStreetMap contributors` ذکر شود.
+
+## History
+
+Written in 2016 against Python 2.7 and GDAL, which meant two Windows
+installers, three environment variables and a Python build that no longer
+exists. Rewritten in 2026 to need nothing but the standard library. The data
+file is unchanged.
+
+Thanks to [xunilk](http://gis.stackexchange.com/users/45066/xunilk) for the
+original point-in-polygon approach, and to
+[Mapzen](https://en.wikipedia.org/wiki/Mapzen) for the extract.

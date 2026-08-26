@@ -1,0 +1,42 @@
+name: ci
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ["3.9", "3.11", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+
+      # No install step on purpose. The whole point of the 2026 rewrite is that
+      # this runs on a bare Python, so a CI job that pip installed anything
+      # would stop proving the claim the README makes.
+      - name: Tests, and no test may skip
+        run: |
+          set -o pipefail
+          python -m unittest -v 2>&1 | tee /tmp/tests.txt
+          if grep -qE '\.\.\. skipped|\(skipped=[0-9]+\)' /tmp/tests.txt; then
+            echo "::error::A test skipped. The suite has no optional dependencies, so nothing should ever skip."
+            exit 1
+          fi
+
+      - name: CLI smoke test
+        run: |
+          python random_tiles.py --list | grep -q "Hormozgan"
+          python random_tiles.py Tehran 5 --seed 1 | grep -q "^MULTIPOINT ("
+          python random_tiles.py IR-23 5 --format csv | head -1 | grep -qx "lon,lat"
+          python random_tiles.py Fars 3 --format geojson | python -c "import json,sys; d=json.load(sys.stdin); assert len(d['features'])==3"
+          # An unknown province must fail loudly rather than print an empty set.
+          code=0
+          python random_tiles.py Nowhere 5 2>/dev/null || code=$?
+          test "$code" -ne 0
